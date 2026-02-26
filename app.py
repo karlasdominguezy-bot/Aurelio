@@ -176,7 +176,7 @@ def interfaz_chat():
     with col_avatar_head:
         if os.path.exists(AVATAR_URL):
             st.markdown('<div style="margin-top: 10px;">', unsafe_allow_html=True)
-            st.image(AVATAR_URL, width=210)
+            st.image(AVATAR_URL, width=200)
             st.markdown('</div>', unsafe_allow_html=True)
 
     st.markdown("---") 
