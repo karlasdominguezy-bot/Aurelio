@@ -109,7 +109,6 @@ def estilos_globales():
     <style>
         .block-container { padding-top: 2rem !important; padding-bottom: 0rem !important; }
         
-        /* Footer Fijo con los nombres del equipo */
         .footer-credits {
             position: fixed; left: 0; bottom: 0; width: 100%;
             background-color: #ffffff; text-align: center;
@@ -118,10 +117,8 @@ def estilos_globales():
 
         div[data-testid="stBottom"] { padding-bottom: 45px; background-color: transparent; }
 
-        /* Estilos Burbujas Chat */
         [data-testid="stChatMessageAvatar"] { width: 40px !important; height: 40px !important; }
         
-        /* Traducción Uploader */
         [data-testid="stFileUploader"] section > div > div > span,
         [data-testid="stFileUploader"] section > div > div > small { display: none !important; }
         [data-testid="stFileUploader"] section > div > div::after {
@@ -188,7 +185,6 @@ def interfaz_gestor_archivos():
 def interfaz_chat():
     estilos_globales()
     
-    # Encabezado Horizontal Estilo Institucional
     col_logo, col_titulo, col_av = st.columns([1, 3, 1])
     with col_logo:
         if os.path.exists(LOGO_URL): st.image(LOGO_URL, width=120)
@@ -229,16 +225,18 @@ def interfaz_chat():
         with contenedor_chat:
             with st.chat_message("assistant", avatar=AVATAR_URL):
                 placeholder = st.empty()
-                placeholder.markdown("🦅 *Analizando...*")
+                placeholder.markdown("🦅 *Ing. Aurelio analizando información...*")
                 try:
                     textos, fuentes = leer_pdfs_locales()
                     contexto = buscar_informacion(st.session_state.messages[-1]["content"], textos, fuentes)
                     
                     prompt_sistema = f"""
-                    Eres el Ing. Aurelio, tutor de la FICA-UCE. 
-                    Contexto recuperado: {contexto}
+                    Eres el Ing. Aurelio, un tutor experto de la FICA-UCE. 
+                    Tu tono es serio, profesional pero alentador para los estudiantes.
+                    Contexto recuperado de la bibliografía: {contexto}
+                    
                     Pregunta del estudiante: {st.session_state.messages[-1]['content']}
-                    Responde de forma clara y profesional.
+                    Responde de forma clara y basada en el contexto si es posible.
                     """
                     
                     model = genai.GenerativeModel(modelo)
