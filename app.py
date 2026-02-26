@@ -186,7 +186,7 @@ def interfaz_chat():
     st.markdown("""
     <div style="background-color: #f0f2f6; padding: 15px; border-radius: 5px; margin-bottom: 15px; font-size: 15px; border-left: 5px solid #C59200;">
         <strong>🦅 ¡Hola! Soy el Ing. Aurelio.</strong><br>
-        Estoy listo para resolver tus dudas sobre la carrera o analizar los documentos que hayas subido.
+        Si quieres conversar sobre algún tema en general, ¡escribe abajo! Si necesitas que revise información específica, ve a <b>"Gestión de Bibliografía"</b> y dame los archivos.
     </div>
     """, unsafe_allow_html=True)
 
